@@ -18,67 +18,69 @@ window.onload = function (){
     requestSession.send();
 };
 function getPosts(){
-    let requestAllPosts = new XMLHttpRequest();
-    requestAllPosts.open("GET", "https://sasasaia.pythonanywhere.com/get-posts", true);
-    requestAllPosts.withCredentials = true;
-    requestAllPosts.onreadystatechange = function (){
-        if (requestAllPosts.status == 200 && requestAllPosts.readyState == 4){
-            let response = requestAllPosts.responseText;
-            if (response == "Not logged in."){
-                window.location.href = "login.html";
-            } else {
-                let allposts = response.split("[nln_str]");
-                allposts.reverse();
-                allposts.forEach(one_post => {
-                    if (one_post.length > 0){
-                        let contentHomePost = document.createElement("div");
-                        let contentHomePostAuthor = document.createElement("h3");
-                        let contentHomePostContent = document.createElement("div");
-                        let contentHomePostContentP = document.createElement("p");
-                        let contentHomePostLine = document.createElement("div");
-                        let contentHomePostStarContainer = document.createElement("div");
-                        let contentHomePostStarContainerImg = document.createElement("img");
+    if (uid != ""){
+        let requestAllPosts = new XMLHttpRequest();
+        requestAllPosts.open("GET", "https://sasasaia.pythonanywhere.com/get-posts", true);
+        requestAllPosts.withCredentials = true;
+        requestAllPosts.onreadystatechange = function (){
+            if (requestAllPosts.status == 200 && requestAllPosts.readyState == 4){
+                let response = requestAllPosts.responseText;
+                if (response == "Not logged in."){
+                    window.location.href = "login.html";
+                } else {
+                    let allposts = response.split("[nln_str]");
+                    allposts.reverse();
+                    allposts.forEach(one_post => {
+                        if (one_post.length > 0){
+                            let contentHomePost = document.createElement("div");
+                            let contentHomePostAuthor = document.createElement("h3");
+                            let contentHomePostContent = document.createElement("div");
+                            let contentHomePostContentP = document.createElement("p");
+                            let contentHomePostLine = document.createElement("div");
+                            let contentHomePostStarContainer = document.createElement("div");
+                            let contentHomePostStarContainerImg = document.createElement("img");
 
-                        contentHomePost.classList = "content-home-post";
-                        contentHomePostAuthor.classList = "content-home-post-author";
-                        contentHomePostAuthor.innerHTML = one_post.split("[sprtr_str]")[1];
-                        contentHomePostContentP.innerHTML = one_post.split("[sprtr_str]")[2];
-                        contentHomePostContent.classList = "content-home-post-content";
-                        contentHomePostContent.appendChild(contentHomePostContentP);
-                        contentHomePostLine.classList = "content-home-post-line";
-                        contentHomePostStarContainer.classList = "content-home-post-starcontainer";
-                        contentHomePostStarContainer.onclick = function (){
-                            let requestStar = new XMLHttpRequest();
-                            requestStar.open("POST", `https://sasasaia.pythonanywhere.com/star-post/${one_post.split("[sprtr_str]")[0]}`, true);
-                            requestStar.withCredentials = true;
-                            requestStar.onreadystatechange = function (){
-                                if (requestStar.status == 200 && requestStar.readyState == 4){
-                                    let thisresponse = requestStar.responseText;
-                                    if (thisresponse == "Not logged in."){
-                                        window.location.href = "login.html";
-                                    } else {
-                                        if (thisresponse.split("[sprtr_str]")[0] == "Success"){
-                                            contentHomePostStarContainerImg.src = thisresponse.split("[sprtr_str]")[1];
+                            contentHomePost.classList = "content-home-post";
+                            contentHomePostAuthor.classList = "content-home-post-author";
+                            contentHomePostAuthor.innerHTML = one_post.split("[sprtr_str]")[1];
+                            contentHomePostContentP.innerHTML = one_post.split("[sprtr_str]")[2];
+                            contentHomePostContent.classList = "content-home-post-content";
+                            contentHomePostContent.appendChild(contentHomePostContentP);
+                            contentHomePostLine.classList = "content-home-post-line";
+                            contentHomePostStarContainer.classList = "content-home-post-starcontainer";
+                            contentHomePostStarContainer.onclick = function (){
+                                let requestStar = new XMLHttpRequest();
+                                requestStar.open("POST", `https://sasasaia.pythonanywhere.com/star-post/${one_post.split("[sprtr_str]")[0]}`, true);
+                                requestStar.withCredentials = true;
+                                requestStar.onreadystatechange = function (){
+                                    if (requestStar.status == 200 && requestStar.readyState == 4){
+                                        let thisresponse = requestStar.responseText;
+                                        if (thisresponse == "Not logged in."){
+                                            window.location.href = "login.html";
+                                        } else {
+                                            if (thisresponse.split("[sprtr_str]")[0] == "Success"){
+                                                contentHomePostStarContainerImg.src = thisresponse.split("[sprtr_str]")[1];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            requestStar.send();
-                        };
-                        let starredUids = one_post.split("[sprtr_str]")[3].substring(1, one_post.split("[sprtr_str]")[3].length - 1).split(",");
-                        contentHomePostStarContainerImg.src = !starredUids.includes(uid) ? "resources/star_filled.png" : "resources/star.png";
-                        contentHomePostStarContainer.appendChild(contentHomePostStarContainerImg);
-                        contentHomePost.appendChild(contentHomePostAuthor);
-                        contentHomePost.appendChild(contentHomePostContent);
-                        contentHomePost.appendChild(contentHomePostLine);
-                        contentHomePost.appendChild(contentHomePostStarContainer);
-                        document.getElementById("content-home").appendChild(contentHomePost);
-                    }
-                });
+                                requestStar.send();
+                            };
+                            let starredUids = one_post.split("[sprtr_str]")[3].substring(1, one_post.split("[sprtr_str]")[3].length - 1).split(",");
+                            contentHomePostStarContainerImg.src = !starredUids.includes(uid) ? "resources/star_filled.png" : "resources/star.png";
+                            contentHomePostStarContainer.appendChild(contentHomePostStarContainerImg);
+                            contentHomePost.appendChild(contentHomePostAuthor);
+                            contentHomePost.appendChild(contentHomePostContent);
+                            contentHomePost.appendChild(contentHomePostLine);
+                            contentHomePost.appendChild(contentHomePostStarContainer);
+                            document.getElementById("content-home").appendChild(contentHomePost);
+                        }
+                    });
+                }
             }
         }
+        requestAllPosts.send();
     }
-    requestAllPosts.send();
 }
 function newpost(){
     window.location.href = "post.html";
@@ -123,6 +125,10 @@ function homeclick(){
     if (document.getElementById("navmenu").style.display == "flex"){
         document.getElementById("navmenu").style.display = "none";
         document.getElementById("navmenuback").style.display = "none";
+    }
+    try {
+        getPosts();
+    } catch (e){
     }
 }
 function communityclick(){
