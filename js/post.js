@@ -23,7 +23,7 @@ function post(){
         if (requestPost.status == 200 && requestPost.readyState == 4){
             let response = requestPost.responseText;
             if (response == "Success"){
-                window.location.href = "webbook.html";
+                window.location.href = "index.html";
             } else {
                 let main = document.getElementById("main");
                 let p = document.createElement("p");

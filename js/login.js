@@ -6,7 +6,7 @@ function login(){
         if (requestLogin.status == 200 && requestLogin.readyState == 4){
             let response = requestLogin.responseText;
             if (response == "Success"){
-                window.location.href = "webbook.html";
+                window.location.href = "index.html";
             } else {
                 let main = document.getElementById("main");
                 let p = document.createElement("p");
