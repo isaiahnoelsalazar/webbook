@@ -1,0 +1,76 @@
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+* {
+    font-family: Righteous;
+}
+body {
+    margin: 0;
+}
+#content-community {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+}
+.content-community-add {
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 16px 16px 16px;
+    width: 50%;
+}
+.content-community-add-title {
+    margin: 0;
+    padding: 8px;
+}
+#post-content {
+    border: solid var(--black) 2px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 16px;
+    margin: 8px 0 16px 0;
+    outline: none;
+    padding: 8px;
+    resize: none;
+    width: 100%;
+}
+.content-community-add > div > button {
+    background-color: var(--black);
+    border: solid var(--black) 2px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 16px;
+}
+.content-community-add > div > button:hover {
+    background-color: white;
+    color: var(--black);
+}
+#context-dialog {
+    animation: fadeout 5s ease-in-out;
+    bottom: 32px;
+    padding: 16px 0;
+    position: fixed;
+    text-align: center;
+    width: calc(100% - 32px);
+}
+@media (max-width: 600px) {
+    .content-community-add, .content-community-add > div > button {
+        width: 80%;
+    }
+    .content-community-add > div > button {
+        padding: 8px 0;
+    }
+}

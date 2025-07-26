@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=7">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#1F1F1F">
+        <link rel="apple-touch-icon" sizes="57x57" href="resources/icon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="resources/icon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="resources/icon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="resources/icon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="resources/icon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="resources/icon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="resources/icon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="resources/icon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="resources/icon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="resources/icon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="resources/icon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="resources/icon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="resources/icon/favicon-16x16.png">
+        <link rel="manifest" href="resources/icon/manifest.json">
+        <meta name="msapplication-TileColor" content="#1F1F1F">
+        <meta name="msapplication-TileImage" content="resources/icon/ms-icon-144x144.png">
+        <title>WebBook</title>
+        <link rel="stylesheet" href="css/colors.css">
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body id="main">
+        <nav>
+            <div class="nav-left">
+                <div class="nav-menu-icon" onclick="menubtnclick()">
+                    <img src="resources/menu.png">
+                </div>
+                <img src="resources/icon/my-website-icon.png" class="logo">
+                <ul>
+                    <li>
+                        <img id="hometab" class="selected" src="resources/home_white.png" onclick="homeclick()">
+                        <img id="communitytab" class="unselected" src="resources/community.png" onclick="communityclick()">
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="nav-user-icon">
+                    <img src="resources/user.png" onclick="edit_account()">
+                </div>
+                <!--<div class="search-box">
+                    <img src="resources/search.png">
+                    <input type="text" placeholder="Search">
+                </div>-->
+            </div>
+        </nav>
+        <div id="dropdownback" onclick="dropback()"></div>
+        <div id="dropdowncard">
+            <a id="accdet" onclick="account_details()">Account details</a>
+            <a id="logout" onclick="logout()">Log out</a>
+        </div>
+        <div id="navmenuback" onclick="navback()"></div>
+        <div id="navmenu">
+            <a id="tabhome" onclick="homeclick()">Home</a>
+            <a id="tabcommunity" onclick="communityclick()">Community</a>
+        </div>
+        <div id="content-home">
+        </div>
+        <div id="content-community">
+            <div class="content-community-add">
+                <h3 class="content-community-add-title">Enter user ID</h3>
+                <input id="follow-user-input" type="text" placeholder="User ID"/>
+                <button onclick="followuser()">Follow</button>
+            </div>
+            <button onclick="newpost()">Create new post</button>
+        </div>
+    </body>
+    <script src="js/index.js"></script>
+</html>

@@ -1,0 +1,111 @@
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+* {
+    font-family: Righteous;
+}
+body {
+    align-items: center;
+    display: flex;
+    height: 95vh;
+    padding: 16px;
+    justify-content: center;
+    margin: 0;
+}
+div {
+    border: solid var(--black) 2px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+div > h1 {
+    padding-top: 16px;
+    text-align: center;
+}
+div > form {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+input[type="text"], input[type="password"] {
+    border: solid var(--gray) 2px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: large;
+    margin: 16px 16px 0 16px;
+    padding: 8px;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+    border: solid var(--black) 2px;
+}
+input[type="password"] {
+    margin-top: 16px;
+}
+input[type="submit"] {
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: large;
+    margin: 48px 16px 16px 16px;
+    padding: 16px;
+}
+div > p {
+    text-align: center;
+}
+#context-dialog {
+    animation: fadeout 5s ease-in-out;
+    bottom: 32px;
+    padding: 16px 0;
+    position: fixed;
+    text-align: center;
+    width: calc(100% - 32px);
+}
+header {
+    border-bottom: solid var(--gray) 2px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#back_arrow {
+    align-items: center;
+    border: solid var(--gray) 2px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    margin: 12px 24px 12px 24px;
+    width: 50px;
+}
+#back_arrow:hover {
+    background-color: var(--gray);
+    border: solid var(--black) 2px;
+}
+#back_arrow > img {
+    height: 32px;
+    width: 32px;
+}
+@media (max-width: 600px) {
+    body {
+        flex-direction: column;
+    }
+    div {
+        height: 100%;
+        width: 100%;
+    }
+    header {
+        border: none;
+        position: unset;
+    }
+    #back_arrow {
+        margin: 0 0 12px 0;
+    }
+}
