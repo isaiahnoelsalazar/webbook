@@ -1,6 +1,6 @@
 window.onload = function (){
     let requestDetails = new XMLHttpRequest();
-    requestDetails.open("GET", "https://sasasaia.pythonanywhere.com/details", true);
+    requestDetails.open("GET", "https://sharenetarchive1.pythonanywhere.com/details", true);
     requestDetails.withCredentials = true;
     requestDetails.onreadystatechange = function (){
         if (requestDetails.status == 200 && requestDetails.readyState == 4){
@@ -20,7 +20,7 @@ window.onload = function (){
 };
 function save(){
     let requestSave = new XMLHttpRequest();
-    requestSave.open("POST", `https://sasasaia.pythonanywhere.com/save?fname=${document.getElementById("fname").value}&lname=${document.getElementById("lname").value}&username=${document.getElementById("username").value}&password=${document.getElementById("password").value}`, true);
+    requestSave.open("POST", `https://sharenetarchive1.pythonanywhere.com/save?fname=${document.getElementById("fname").value}&lname=${document.getElementById("lname").value}&username=${document.getElementById("username").value}&password=${document.getElementById("password").value}`, true);
     requestSave.withCredentials = true;
     requestSave.onreadystatechange = function (){
         if (requestSave.status == 200 && requestSave.readyState == 4){

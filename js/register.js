@@ -1,6 +1,6 @@
 function register(){
     let requestRegister = new XMLHttpRequest();
-    requestRegister.open("POST", `https://sasasaia.pythonanywhere.com/register?fname=${document.getElementById("fname").value}&lname=${document.getElementById("lname").value}&username=${document.getElementById("username").value}&password=${document.getElementById("password").value}`, true);
+    requestRegister.open("POST", `https://sharenetarchive1.pythonanywhere.com/register?fname=${document.getElementById("fname").value}&lname=${document.getElementById("lname").value}&username=${document.getElementById("username").value}&password=${document.getElementById("password").value}`, true);
     requestRegister.onreadystatechange = function (){
         if (requestRegister.status == 200 && requestRegister.readyState == 4){
             let response = requestRegister.responseText;

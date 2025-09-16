@@ -2,7 +2,7 @@ let uid = "";
 window.onload = function (){
     homeclick();
     let requestSession = new XMLHttpRequest();
-    requestSession.open("GET", "https://sasasaia.pythonanywhere.com/session", true);
+    requestSession.open("GET", "https://sharenetarchive1.pythonanywhere.com/session", true);
     requestSession.withCredentials = true;
     requestSession.onreadystatechange = function (){
         if (requestSession.status == 200 && requestSession.readyState == 4){
@@ -20,7 +20,7 @@ window.onload = function (){
 function getPosts(){
     if (uid != ""){
         let requestAllPosts = new XMLHttpRequest();
-        requestAllPosts.open("GET", "https://sasasaia.pythonanywhere.com/get-posts", true);
+        requestAllPosts.open("GET", "https://sharenetarchive1.pythonanywhere.com/get-posts", true);
         requestAllPosts.withCredentials = true;
         requestAllPosts.onreadystatechange = function (){
             if (requestAllPosts.status == 200 && requestAllPosts.readyState == 4){
@@ -50,7 +50,7 @@ function getPosts(){
                             contentHomePostStarContainer.classList = "content-home-post-starcontainer";
                             contentHomePostStarContainer.onclick = function (){
                                 let requestStar = new XMLHttpRequest();
-                                requestStar.open("POST", `https://sasasaia.pythonanywhere.com/star-post/${one_post.split("[sprtr_str]")[0]}`, true);
+                                requestStar.open("POST", `https://sharenetarchive1.pythonanywhere.com/star-post/${one_post.split("[sprtr_str]")[0]}`, true);
                                 requestStar.withCredentials = true;
                                 requestStar.onreadystatechange = function (){
                                     if (requestStar.status == 200 && requestStar.readyState == 4){
@@ -87,7 +87,7 @@ function newpost(){
 }
 function followuser(){
     let requestFollow = new XMLHttpRequest();
-    requestFollow.open("POST", `https://sasasaia.pythonanywhere.com/add-friend/${document.getElementById("follow-user-input").value}`, true);
+    requestFollow.open("POST", `https://sharenetarchive1.pythonanywhere.com/add-friend/${document.getElementById("follow-user-input").value}`, true);
     requestFollow.withCredentials = true;
     requestFollow.onreadystatechange = function (){
         if (requestFollow.status == 200 && requestFollow.readyState == 4){
@@ -170,7 +170,7 @@ function account_details(){
 }
 function logout(){
     let requestLogout = new XMLHttpRequest();
-    requestLogout.open("GET", "https://sasasaia.pythonanywhere.com/logout", true);
+    requestLogout.open("GET", "https://sharenetarchive1.pythonanywhere.com/logout", true);
     requestLogout.withCredentials = true;
     requestLogout.onreadystatechange = function (){
         if (requestLogout.status == 200 && requestLogout.readyState == 4){
